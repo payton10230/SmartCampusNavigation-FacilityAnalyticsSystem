@@ -7,3 +7,9 @@ Milestone 1:
 4) Concise design_document.txt describing the custom hash function, collision strategy, graph representation, and main classes and modules.
 5) txt with the [M1] tests from Section 10 and their results.
 6) Working demonstration of all Milestone 1 features.
+
+The project divides naturally into three parts. A suggested split is shown below; shared work (file-loading utilities, menu, tests, documentation) belongs to everyone.
+
+Member A: facility records, custom hash table, ID search, name and category search, category report.
+Member B: campus graph, BFS reachability, shortest path, connectivity report.
+Member C: department tree, traversals, department statistics.
