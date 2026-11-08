@@ -11,5 +11,7 @@ Milestone 1:
 The project divides naturally into three parts. A suggested split is shown below; shared work (file-loading utilities, menu, tests, documentation) belongs to everyone.
 
 -Member A (Eddie Sanchez): facility records, custom hash table, ID search, name and category search, category report.
+
 -Member B (Austin Feste): campus graph, BFS reachability, shortest path, connectivity report.
+
 -Member C (Payton Dencklau): department tree, traversals, department statistics.
