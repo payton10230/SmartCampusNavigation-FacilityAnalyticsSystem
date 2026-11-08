@@ -10,6 +10,8 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <queue>
 
 #using namespace std
 
@@ -35,12 +37,18 @@ class CampusGraph {
         //returns neighbors of index, insertion order
         vector<int>& getNeighbors(int index);
         //returns tot buildings
-        int getBuildingCount();
+        int getBuildingCount() const;
         //returns tot connections
-        int getConnectionCount();
+        int getConnectionCount() const;
         //returns degree
-        int getDegree();
+        int getDegree() const;
         //returns false if graph is empty
-        bool isEmpty();
+        bool isEmpty() const;
+        //displays counts and degrees
+        void displayCountAndDegrees() const;
+        //BFS from startName; prints vist order with distance and reachable count
+        void BfsReachable(const string& startName) const;
+        //displays graph
+        void displayGraph() const;
 }
 #endif //CAMPUSGRAPH_H_
