@@ -25,8 +25,6 @@ class Tree {
         DNode* root;
         int numDep;
 
-        //For Case-Sensitive Strings to put them to lowercase
-        static string toLC(const string& s);
         //For recursion during findDep
         DNode* findHelper(DNode* cur, const string& n) const;
         //For PrintTree Indention
@@ -53,6 +51,8 @@ class Tree {
         void PrintTree() const;
         //Prints Preorder version of tree
         void PrintPreorder() const;
+        //Search and Display Method for tree
+        bool searchDep(const string& n) const;
 
 };
 

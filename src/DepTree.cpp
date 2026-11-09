@@ -149,3 +149,29 @@ void Tree::PrintPreorder() const {
     }
 }
 
+//Search and Display Method for tree
+bool Tree::searchDep(const string& n) const {
+    int depth = 0;
+    DNode* res = findDep(n);
+    if (res!=nullptr) {
+        DNode* res2 = res;
+        while (res2->parent!=nullptr) {
+            res2=res2->parent;
+            depth++;
+        }
+        cout<<"Name: "<<res->name<<endl;
+        if (res->parent==nullptr) {
+            cout<<"Parent: None\n";
+        } else {
+            cout<<"Parent: "<<res->parent->name<<endl;
+        }
+        cout<<"Child Count: "<<res->children.size()<<endl;
+        cout<<"Depth: " <<depth<<endl;
+        return true;
+    } else {
+        cout<<"Department not found.\n";
+        return false;
+    }
+}
+
+
