@@ -25,6 +25,22 @@ int main() {
 
   int choice=-1;
   string Dname, Dparent, Dreason;
+  int ID;
+
+  //Loading From Files
+  string dir = "data";
+
+  //FOR FACILITIES.TXT
+  string Fpath = dir+"/facilities.txt";
+  int accepted=0, rejected=0;
+  f.loadFromFile(Fpath,accepted,rejected);
+  cout<<"facilites.txt: "<<accepted<<" accepted, "<<rejected<<" rejected, Hash Capacity: "
+
+  //FOR DEPARTMENTS.TXT
+  string Dpath = dir+"/departments.txt";
+  int ac=0, rj=0;
+  t.loadFromFile(Dpath, ac, rj);
+  cout<<"departments.txt: "<<ac<<" accepted, "<<rj<<" rejected\n";
 
 
   while (choice != 0) {
@@ -49,12 +65,20 @@ int main() {
   switch (choice) {
     //View all facilites
     case 1:
-
+      fm.viewAllFacilites();
       break;
 
     //Search facility by ID
     case 2:
-
+      ID=0;
+      cout<<"Enter Facility ID: ";
+      getline(cin, ID);
+      ID=trim(ID);
+      if (!ID.empty()) {
+        fm.searchFacilityById(ID);
+      } else {
+        cout<<"Error: Name cannot be empty.\n";
+      }
       break;
 
     //View Campus Graph
