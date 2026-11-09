@@ -6,6 +6,7 @@
 #ifndef DEPTREE_H
 #define DEPTREE_H
 
+#include <fstream>
 #include <vector>
 #include <iostream>
 #include <string>
@@ -39,6 +40,8 @@ class Tree {
         Tree();
         //Destructor
         ~Tree();
+        //Loading from departments.txt
+        bool loadFromFile(const string& path, int& accepted, int& rejected);
         //Add Department with name n and parent p
         bool addDep(const string& n, const string& p, string& reason);
         //Find Department with name n

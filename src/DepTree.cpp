@@ -16,6 +16,13 @@ static string toLC(const string& s) {
     });
     return str;
 }
+//Trim function for loading from File
+static string trim(const string& str) {
+    size_t first = str.find_first_not_of(" \t\r\n");
+    if(first == string::npos) return "";
+    size_t last = str.find_last_not_of(" \t\r\n");
+    return str.substr(first, (last - first + 1));
+}
 
 //For recursion during findDep
 DNode* Tree::findHelper(DNode* cur, const string& n) const {
@@ -73,6 +80,54 @@ Tree::Tree() {
 //Destructor
 Tree::~Tree() {
     desHelper(root);
+}
+
+//Loading from departments.txt
+bool Tree::loadFromFile(const string& filepath, int& accepted, int& rejected) {
+    accepted=0,rejected=0;
+    string reason;
+    ifstream file(filepath);
+    if (!file.is_open()) {
+        cout<<"Error: Couldn't find file "<<filepath<<". File will be treated as empty.\n";
+        return false; 
+    }
+    int lineNum=0;
+    string line;
+    while (getline(file,line)) {
+        lineNum++;
+        line = trim(line);
+        if (line.empty() || line[0] == '#') continue;
+        
+        int x = count(line.begin(), line.end(), '|');
+        if (x==1) {
+
+            size_t pos = line.find('|');
+            string dnode = line.substr(0,pos);
+            string pnode = line.substr(pos+1);
+
+            dnode = trim(dnode);
+            pnode = trim(pnode);
+
+            if (dnode.empty() || pnode.empty()) {
+                cout<<"Warning [departments.txt: "<<lineNum<<"]: One of the inputs is empty.\n";
+                rejected++;
+                continue;
+            }
+
+            if (!addDep(dnode, pnode, reason)) {
+                cout<<"Warning [departments.txt: "<<lineNum<<"]: "<<reason<<".\n";
+                rejected++;
+            } else {accepted++;}
+        } else { 
+            cout<<"Warning [departments.txt: "<<lineNum<<"]: There is an invalid number of seperators.\n";
+            rejected++;
+        }
+
+
+
+    }
+    file.close();
+    return true;
 }
 
 //Add Department with name n and parent p
