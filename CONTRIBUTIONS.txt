@@ -27,3 +27,38 @@ CampusGraph.h/.cpp -- AUstin Feste
         void BfsReachable(const string& startName) const;
         //displays graph
         void displayGraph() const;
+
+DepTree.h/.cpp -- Payton Dencklau
+
+        //DNode Struct for Implementation in Tree Class
+        struct DNode
+    
+        //For recursion during findDep
+        DNode* findHelper(DNode* cur, const string& n) const;
+        //For PrintTree Indention
+        void printHelper(const DNode* cur, int depth) const;
+        //For PrintPreorder Sequence
+        void preorderHelper(const DNode* cur, bool& first) const;
+        //Destructor to delete for DNode*
+        void desHelper(DNode* cur);
+
+        //Constructor to initizalize root and numDep
+        Tree();
+        //Destructor 
+        ~Tree();
+        //Loading from departments.txt
+        bool loadFromFile(const string& path, int& accepted, int& rejected);
+        //Add Department with name n and parent p
+        bool addDep(const string& n, const string& p, string& reason);
+        //Find Department with name n
+        DNode* findDep(const string& n) const;
+        //Check if Name already exists with name n
+        bool nameExists(const string& n) const;
+        //Check if tree is empty
+        bool isEmpty() const;
+        //Prints Tree (Regular)
+        void PrintTree() const;
+        //Prints Preorder version of tree
+        void PrintPreorder() const;
+        //Search and Display Method for tree
+        bool searchDep(const string& n) const;
