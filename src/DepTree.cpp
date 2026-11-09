@@ -1,0 +1,151 @@
+/*
+ * DepTree.cpp
+ * use: Tree and Tree functions implementation
+ * Author: Payton Dencklau
+ */
+#include "DepTree.h"
+#include <cctype>
+#include <algorithm>
+#include <string>
+
+//For Case-Sensitive Strings to put them to lowercase
+static string toLC(const string& s) {
+    string str = s;
+    transform(str.begin(), str.end(), str.begin(), [](unsigned char c) {
+        return tolower(c);
+    });
+    return str;
+}
+
+//For recursion during findDep
+DNode* Tree::findHelper(DNode* cur, const string& n) const {
+    if (cur==nullptr) {
+        return nullptr;
+    }
+    if (toLC(cur->name)==toLC(n)) {
+        return cur;
+    }
+    for (size_t i = 0; i<cur->children.size(); i++) {
+        DNode* child = findHelper(cur->children[i], n);
+        if (child!=nullptr) {
+            return child;
+        }
+    }
+    return nullptr;
+}
+
+//For PrintTree Indention
+void Tree::printHelper(const DNode* cur, int depth) const {
+    if (cur==nullptr) return;
+    string ind(depth * 4, ' ');
+    cout<<ind<<cur->name<<endl;
+    for (size_t i = 0; i<cur->children.size(); i++) {
+        printHelper(cur->children[i], depth+1);
+    }
+}
+
+//For PrintPreorder Sequence
+void Tree::preorderHelper(const DNode* cur, bool& first) const {
+    if (cur==nullptr) return;
+    if (!first) cout<< ", ";
+    cout<<cur->name;
+    first = false;
+    for (size_t i = 0; i<cur->children.size(); i++) {    
+        preorderHelper(cur->children[i], first);
+    }
+}
+//Destructor for DNode*
+void Tree::desHelper(DNode* cur) {
+    if (cur==nullptr) return;
+    for (size_t i = 0; i<cur->children.size(); i++) {    
+        desHelper(cur->children[i]);
+    }
+    delete cur;
+}
+
+
+//Constructor to initizalize root and numDep
+Tree::Tree() {
+    root = nullptr;
+    numDep = 0;
+}
+
+//Destructor
+Tree::~Tree() {
+    desHelper(root);
+}
+
+//Add Department with name n and parent p
+bool Tree::addDep(const string& n, const string& p, string& reason) {
+    if (n.empty()) {
+        reason="blank name";
+        return false;
+    }
+    if (nameExists(n)) {
+        reason="name exists";
+        return false;
+    }
+    if (isEmpty()) {
+        string pn = toLC(p);
+        if (pn!="none") {
+            reason="parent isn't NONE";
+            return false;
+        } else {
+            DNode* d = new DNode;
+            d->name = n;
+            root = d;
+
+            numDep++;
+            return true;
+        }
+    } else {
+        DNode* par = findDep(p);
+        if (par!=nullptr) {
+            DNode* d = new DNode;
+            d->name = n;
+            d->parent = par;
+            par->children.push_back(d);
+            numDep++;
+            return true;
+        } else {
+            reason="can't find parent";
+            return false;
+        }
+    }
+}
+
+//Find Department with name n
+DNode* Tree::findDep(const string& n) const {
+    return findHelper(root, n);
+}
+
+//Check if Name already exists with name n
+bool Tree::nameExists(const string& n) const {
+    return findDep(n) != nullptr;
+}
+
+//Check if tree is empty
+bool Tree::isEmpty() const {
+    return root == nullptr;
+}
+
+//Prints Tree (Regular)
+void Tree::PrintTree() const {
+    if(!isEmpty()) {
+        printHelper(root, 0);
+    } else {
+        cout<<"The Tree is empty.\n";
+    }
+}
+
+//Prints Preorder version of tree
+void Tree::PrintPreorder() const {
+    if(!isEmpty()) {
+        bool first = true;
+        preorderHelper(root, first);
+        cout<<endl;
+    } else {
+        cout<<"The Tree is empty.\n";
+    }
+}
+

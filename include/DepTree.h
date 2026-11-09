@@ -25,12 +25,16 @@ class Tree {
         DNode* root;
         int numDep;
 
+        //For Case-Sensitive Strings to put them to lowercase
+        static string toLC(const string& s);
         //For recursion during findDep
         DNode* findHelper(DNode* cur, const string& n) const;
         //For PrintTree Indention
         void printHelper(const DNode* cur, int depth) const;
         //For PrintPreorder Sequence
-        void preorderHelper(const DNode* cur) const;
+        void preorderHelper(const DNode* cur, bool& first) const;
+        //Destructor for DNode*
+        void desHelper(DNode* cur);
 
     public:
         //Constructor to initizalize root and numDep
