@@ -34,7 +34,7 @@ int main() {
   string Fpath = dir+"/facilities.txt";
   int accepted=0, rejected=0;
   f.loadFromFile(Fpath,accepted,rejected);
-  cout<<"facilites.txt: "<<accepted<<" accepted, "<<rejected<<" rejected, Hash Capacity: "
+  cout<<"facilites.txt: "<<accepted<<" accepted, "<<rejected<<" rejected, Hash Capacity: "<<fm.getHashCapacity()<<", Hash Entries: "<<fm.getHashEntries<<", Hash Collisions: "fm.getHashCollisions<<endl;
 
   //FOR DEPARTMENTS.TXT
   string Dpath = dir+"/departments.txt";
