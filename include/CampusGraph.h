@@ -13,7 +13,7 @@
 #include <iostream>
 #include <queue>
 
-#using namespace std
+using namespace std
 
 class CampusGraph {
     private:
@@ -31,7 +31,7 @@ class CampusGraph {
         //adds connection, returns false and sets reason if building is unknown or duped
         bool addConnection(string& a, string& b, string& reason);
         //returns index of building, -1 if not found
-        int findbuilding(string& name);
+        int findBuilding(string& name);
         //returns name at index
         string& getBuildingName(int index);
         //returns neighbors of index, insertion order

@@ -1,4 +1,4 @@
-#include <CampusGraph.h>
+#include "CampusGraph.h"
 
 //lil helper func, cuts spaces, tabs, /r, /n from both ends
 static string trimStr(const string& s){
@@ -28,7 +28,7 @@ bool CampusGraph::addBuilding(string& name, string& reason){
     string clean = trimStr(name);
     if(clean.empty()){
         reason = "empty building name";
-        return false
+        return false;
     }
     if(findBuilding(clean) != -1){
         reason = "dupe building '" + clean+"'";
