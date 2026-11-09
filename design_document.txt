@@ -1,1 +1,11 @@
+Hash Function: 
 
+Collision Strategy (and Justification): 
+
+Collision-Counting Definition: 
+
+Capacity: 
+
+Graph Representation (and Justification): 
+
+Main Classes: As of M1 there is only one a trim function, which takes away unnecessary whitespace. I implemented it to make it as hard as possible to have issues when accessing the menu in regards of input of any kind.
