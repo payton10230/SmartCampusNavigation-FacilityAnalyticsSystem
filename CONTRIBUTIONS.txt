@@ -28,4 +28,8 @@ CampusGraph.h/.cpp -- AUstin Feste
         //displays graph
         void displayGraph() const;
 
+Facility.h, FacilityManager.h, and HashTable.h -- Eddie Sanchez
+        Struct for Facility
+        HashTable funcitonality and FacilityManager for Facility implementation
+
 Payton Dencklau -- Node Struct for Tree, and Tree header/class functionality. Also Menu choice 1-2 and 6-10 in main.cpp
