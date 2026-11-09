@@ -1,10 +1,10 @@
-Hash Function: 
+Hash Function: Polynomial rolling hash (hashValue * 31 + c)
 
-Collision Strategy (and Justification): 
+Collision Strategy (and Justification): separate chaining vectors. the Justification is  to handle collisions without causing issues and allow the items to share the same bucket.
 
-Collision-Counting Definition: 
+Collision-Counting Definition: its checked with if(!buckets[index].empty()); the totalCollisions increments by 1 everytime an item is added.
 
-Capacity: 
+Capacity: default size of 11
 
 Graph Representation (and Justification): 
 

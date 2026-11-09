@@ -29,7 +29,21 @@ CampusGraph.h/.cpp -- AUstin Feste
         void displayGraph() const;
 
 Facility.h, FacilityManager.h, and HashTable.h -- Eddie Sanchez
-        Struct for Facility
-        HashTable funcitonality and FacilityManager for Facility implementation
-
+        Facility.h- Struct for Facility with id, name, building, and category.
+        FacilityManager.h - two data structures, custom HashTable for lookups, and vector<Facility> for insertion order.
+                loadFromFile - parses files, validates ID, buildings, duplicates, and counts files
+                viewAllFacilities - Prints facilities in order
+                searchFacilityById - look up using the hash HashTable
+                searchByName & searchByCategory - scans vectors for matching entries.
+                generateCategoryReport - summarizes the counts per category
+                trim & equalsIgnoreCase - cleans whitespace and case checks.
+                HashTable funcitonality and FacilityManager for Facility implementation
+        HashTable.h - uses hash table using separate chaining for fast lookup. Id lookups and duplicate handling.
+                HashNode - Pairs an ID key with its Facility record.
+                hashFunction - uses a polynomial rolling formula (hashValue * 31 + char) mapped to the table size
+                insert - normalizes ID's checks duplicates, collisions, and adds records
+                find - normalizes search ID, looks for specific bucket, and returns a pointer to the Facility or the nullptr if its missing.
+                getCapacity - gets capacity for status report
+                getEntries - gets entries for status report
+                getCollisions -  gets collisions for status report
 Payton Dencklau -- Node Struct for Tree, and Tree header/class functionality. Also Menu choice 1-2 and 6-10 in main.cpp
