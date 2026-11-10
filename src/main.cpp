@@ -2,12 +2,13 @@
 #include "DepTree.h"
 #include "Facility.h"
 #include "FacilityManager.h"
-#include "GraphAlgorithims.h"
+// #include "GraphAlgorithims.h"
 #include "HashTable.h"
 
 #include <iostream>
 #include <string>
 #include <limits>
+#include <vector>
 
 
 //Quick Trim function for Input
@@ -18,23 +19,32 @@ static string trim(const string& str) {
     return str.substr(first, (last - first + 1));
 }
 
-int main() {
+int main(int argc, char* argv[]) {
   Tree t;
   FacilityManager fm;
   // CampusGraph cg;
 
   int choice=-1;
   string Dname, Dparent, Dreason;
-  int ID;
+  string ID;
 
   //Loading From Files
   string dir = "data";
+  //Acception commandline naming data directory
+  if (argc>1) {
+    dir = argv[1];
+  }
+
+  //FOR BUILDINGS.TXT
+
+  //FOR CONNECTIONS.TXT
 
   //FOR FACILITIES.TXT
   string Fpath = dir+"/facilities.txt";
   int accepted=0, rejected=0;
-  f.loadFromFile(Fpath,accepted,rejected);
-  cout<<"facilites.txt: "<<accepted<<" accepted, "<<rejected<<" rejected, Hash Capacity: "<<fm.getHashCapacity()<<", Hash Entries: "<<fm.getHashEntries<<", Hash Collisions: "fm.getHashCollisions<<endl;
+  vector<string> aB; 
+  fm.loadFromFile(Fpath,aB, accepted,rejected);
+  cout<<"facilities.txt: "<<accepted<<" accepted, "<<rejected<<" rejected, Hash Capacity: "<<fm.getHashCapacity()<<", Hash Entries: "<<fm.getHashEntries()<<", Hash Collisions: "<<fm.getHashCollisions()<<endl;
 
   //FOR DEPARTMENTS.TXT
   string Dpath = dir+"/departments.txt";
@@ -44,7 +54,7 @@ int main() {
 
 
   while (choice != 0) {
-  cout<<"1. View all facilities\n2. Search facility by ID\n3. View campus graph\n4. Display graph counts and degrees\n5. Find reachable buildings (BFS)\n6. Add department\n7. Search department\n8. Display department hierarchy\n9. Run preorder traversal\n0. Exit\n\nEnter choice: ";
+  cout<<"\n1. View all facilities\n2. Search facility by ID\n3. View campus graph\n4. Display graph counts and degrees\n5. Find reachable buildings (BFS)\n6. Add department\n7. Search department\n8. Display department hierarchy\n9. Run preorder traversal\n0. Exit\n\nEnter choice: ";
   cin>>choice;
   if(!cin) {
     if (cin.eof()) {
@@ -65,19 +75,19 @@ int main() {
   switch (choice) {
     //View all facilites
     case 1:
-      fm.viewAllFacilites();
+      fm.viewAllFacilities();
       break;
 
     //Search facility by ID
     case 2:
-      ID=0;
+      // ID="";
       cout<<"Enter Facility ID: ";
       getline(cin, ID);
       ID=trim(ID);
       if (!ID.empty()) {
         fm.searchFacilityById(ID);
       } else {
-        cout<<"Error: Name cannot be empty.\n";
+        cout<<"Error: ID cannot be empty.\n";
       }
       break;
 

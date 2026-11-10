@@ -13,16 +13,16 @@
 #include <iostream>
 #include <queue>
 
-using namespace std
+using namespace std;
 
 class CampusGraph {
     private:
-        vector<> names;
-        vector<> adj;
+        vector<string> names;
+        vector<vector<int>> adj;
         int edgeCount;
 
         //none case sensitive string compare
-        static bool equalsIgnore(string& a, string b);
+        static bool equalsIgnore(const string& a, string b);
     public:
         //creates an empty graph
         CampusGraph();
@@ -31,7 +31,7 @@ class CampusGraph {
         //adds connection, returns false and sets reason if building is unknown or duped
         bool addConnection(string& a, string& b, string& reason);
         //returns index of building, -1 if not found
-        int findBuilding(string& name);
+        int findBuilding(const string& name) const;
         //returns name at index
         string& getBuildingName(int index);
         //returns neighbors of index, insertion order
@@ -41,7 +41,7 @@ class CampusGraph {
         //returns tot connections
         int getConnectionCount() const;
         //returns degree
-        int getDegree() const;
+        int getDegree(int index) const;
         //returns false if graph is empty
         bool isEmpty() const;
         //displays counts and degrees
@@ -50,5 +50,5 @@ class CampusGraph {
         void BfsReachable(const string& startName) const;
         //displays graph
         void displayGraph() const;
-}
+};
 #endif //CAMPUSGRAPH_H_
