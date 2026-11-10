@@ -1,9 +1,10 @@
-// #include "CampusGraph.h" //Has some errors rn
+#include "CampusGraph.h"
 #include "DepTree.h"
 #include "Facility.h"
 #include "FacilityManager.h"
 // #include "GraphAlgorithims.h"
 #include "HashTable.h"
+#include "GraphLoader.h"
 
 #include <iostream>
 #include <string>
@@ -22,7 +23,7 @@ static string trim(const string& str) {
 int main(int argc, char* argv[]) {
   Tree t;
   FacilityManager fm;
-  // CampusGraph cg;
+  CampusGraph cg;
 
   int choice=-1;
   string Dname, Dparent, Dreason;
@@ -36,13 +37,18 @@ int main(int argc, char* argv[]) {
   }
 
   //FOR BUILDINGS.TXT
+  loadBuildings(cg,dir);
 
   //FOR CONNECTIONS.TXT
+  loadConnections(cg,dir);
 
   //FOR FACILITIES.TXT
   string Fpath = dir+"/facilities.txt";
   int accepted=0, rejected=0;
-  vector<string> aB; 
+  vector<string> aB;
+  for (int i = 0; i<cg.getBuildingCount(); i++) {
+    aB.push_back(cg.getBuildingName(i));
+  }
   fm.loadFromFile(Fpath,aB, accepted,rejected);
   cout<<"facilities.txt: "<<accepted<<" accepted, "<<rejected<<" rejected, Hash Capacity: "<<fm.getHashCapacity()<<", Hash Entries: "<<fm.getHashEntries()<<", Hash Collisions: "<<fm.getHashCollisions()<<endl;
 
