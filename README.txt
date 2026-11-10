@@ -15,3 +15,47 @@ The project divides naturally into three parts. A suggested split is shown below
 -Member B (Austin Feste): campus graph, BFS reachability, shortest path, connectivity report.
 
 -Member C (Payton Dencklau): department tree, traversals, department statistics.
+
+Directory:
+/data/
+    buildings.txt
+    connections.txt
+    departments.txt
+    facilities.txt
+/include/
+    CampusGraph.h
+    DepTree.h
+    Facility.h
+    FacilityManager.h
+    GraphAlgorithims.h
+    GraphLoader.h
+    HashTable.h
+/src/
+    CampusGraph.cpp
+    DepTree.cpp
+    GraphAlgorithims.cpp
+    GraphLoader.cpp
+    main.cpp
+/testdata/
+    /empty_dep/
+        buildings.txt
+        connections.txt
+        facilities.txt
+    /root-only_dep/
+        buildings.txt
+        connections.txt
+        departments.txt
+        facilities.txt
+.gitignore
+CONTRIBUTIONS.txt
+design_document.txt
+README.txt
+test_results.txt
+
+
+Build to compile program:
+g++ -std=c++11 -Wall -Wextra -Iinclude src/main.cpp src/DepTree.cpp src/CampusGraph.cpp src/GraphLoader.cpp -o campus
+
+Run command:
+./campus (default)
+./campus testdata/... (usign named data directory testdata/)
