@@ -6,6 +6,6 @@ Collision-Counting Definition: its checked with if(!buckets[index].empty()); the
 
 Capacity: default size of 11
 
-Graph Representation (and Justification): 
+Graph Representation (and Justification): Used an adjacency list, Justification is to
 
-Main Classes: As of M1 there is only one a trim function, which takes away unnecessary whitespace. I implemented it to make it as hard as possible to have issues when accessing the menu in regards of input of any kind.
+Main Classes: The classes that are included in main are as follows: Facility, HashTable, FacilityManager, CampusGraph, GraphLoader, and DepTree(Dnode struct and Tree class). As of M1 there is only one a trim function, which takes away unnecessary whitespace. I implemented it to make it as hard as possible to have issues when accessing the menu in regards of input of any kind.

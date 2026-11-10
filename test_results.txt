@@ -13,4 +13,10 @@ TEST 10.4-#1 EMPTY TREE
 -Actual Result: "The Tree is empty." "The Tree is empty." "Enter Name: " "Success!" "Exiting menu function." 
 -Pass of Fail?: PASS
 
+TEST 10.4-#1 ROOT-ONLY TREE
+-Description:root-only_dep has departments.txt with only root node, checking menu choices 7,8,9 to reflect this
+-Input: ./campus testdata/root-only_dep 8 9 7 University 0 
+-Expected Result: choice 8 and 9 only print "University", choice 7 prints "University", alogn with no parents, no children, and Depth = 0
+-Actual Result: "University" "University" "Enter Name: " "Name: University\nParent: None\nChild Count: 0\nDepth: 0\n"
+-Pass of Fail?: PASS
 

@@ -46,4 +46,4 @@ Facility.h, FacilityManager.h, and HashTable.h -- Eddie Sanchez
                 getCapacity - gets capacity for status report
                 getEntries - gets entries for status report
                 getCollisions -  gets collisions for status report
-Payton Dencklau -- Node Struct for Tree, and Tree header/class functionality. Also Menu choice 1-2 and 6-10 in main.cpp
+Payton Dencklau -- Node Struct for Tree, and Tree header/class functionality. Also Menu choice 1-10 in main.cpp and functionality within main.cpp, debugging throughout all files, testing (documented) and Main classes in design_document.txt
