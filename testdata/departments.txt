@@ -1,8 +1,0 @@
-# DepartmentName|ParentName
-Uni|NONE
-CoE|Uni
-CoS|Uni
-CS|CoE
-EE|CoE
-Mathematics|CoS
-Physics|CoS
