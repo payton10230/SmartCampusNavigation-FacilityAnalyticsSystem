@@ -2,7 +2,7 @@
 
 //lil helper func, cuts spaces, tabs, /r, /n from both ends
 static string trimStr(const string& s){
-    const string ws = " \t\r\n"//whitespaces needed gone
+    const string ws = " \t\r\n";//whitespaces needed gone
     size_t start = s.find_first_not_of(ws); //searches a string for the first character that does not match any of the characters in a specified set.
     if (start == string::npos) return ""; //npos is just not found
     size_t end = s.find_last_not_of(ws); // same thingg other side
@@ -12,7 +12,7 @@ static string trimStr(const string& s){
 //creates an empty graph
 CampusGraph::CampusGraph() : edgeCount(0) {}
 
-bool CampusGraph::equalsIgnore(string& a, string b){
+bool CampusGraph::equalsIgnore(const string& a, string b){
     if(a.size() != b.size()) return false;
     for(size_t i = 0; i < a.size(); i++){ //size_t is just a really big num to handle whatevers entered
         char x = a[i], y = b[i];
@@ -64,7 +64,7 @@ bool CampusGraph::addConnection(string& a, string& b, string& reason){
     return true;
 }
 //returns index of building, -1 if not found
-int CampusGraph::findBuilding(string& name){
+int CampusGraph::findBuilding(const string& name) const {
     string key = trimStr(name);
     for(size_t i = 0; i < names.size(); i++) {
         if(equalsIgnore(names[i], key)) return (int)i;
@@ -80,7 +80,7 @@ vector<int>& CampusGraph::getNeighbors(int index){
     return adj[index];
 }
 //returns tot buildings
-int CampusGraph::getBuildingCount(){return (int)names.size(); }
+int CampusGraph::getBuildingCount() const {return (int)names.size(); }
 //returns tot connections
 int CampusGraph::getConnectionCount() const {return edgeCount; }
 //returns degree
@@ -89,7 +89,7 @@ int CampusGraph::getDegree(int index) const { return (int)adj[index].size(); }
 bool CampusGraph::isEmpty() const { return names.empty(); }
 
 // Prints totals and the degree of every building.
-void CampusGraph::displayCountsAndDegrees() const {
+void CampusGraph::displayCountAndDegrees() const {
     if (names.empty()) {
         cout << "No buildings are loaded." << endl;
         cout << "Total buildings: 0" << endl;
@@ -104,7 +104,7 @@ void CampusGraph::displayCountsAndDegrees() const {
 }
  
 // BFS from startName; prints visit order with distances and the reachable count.
-void CampusGraph::bfsReachable(const string& startName) const {
+void CampusGraph::BfsReachable(const string& startName) const {
     int start = findBuilding(startName);
     if (start == -1) {
         cout << "Error: unknown building '" << trimStr(startName) << "'." << endl;
