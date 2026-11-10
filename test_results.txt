@@ -1,32 +1,16 @@
 TEST 10.1: FILE LOADING
 -Test Num: 1
--Desc:
+-Description:
 -Input:
 -Expected Result:
 -Actual Result:
 -Pass of Fail?: 
 
-TEST 10.2: HASH TABLE AND SEARCH
--Test Num: 1
--Desc:
--Input:
--Expected Result:
--Actual Result:
--Pass of Fail?: 
-
-TEST 10.3: GRAPH AND BFS
--Test Num: 1
--Desc:
--Input:
--Expected Result:
--Actual Result:
--Pass of Fail?: 
+TEST 10.4-#1 EMPTY TREE
+-Description:checking menu choices 8 and 9 on empty tree, adding node to confirm it's the root, empty_dep has no departments.txt
+-Input: ./campus testdata/empty_dep 8 9 6 root 0 
+-Expected Result: both choices 8 and 9 print "The tree is empty.", no parent promtp when adding root node
+-Actual Result: "The Tree is empty." "The Tree is empty." "Enter Name: " "Success!" "Exiting menu function." 
+-Pass of Fail?: PASS
 
 
-TEST 10.4: TREE, REPORTS, AND MENU
--Test Num: 1
--Desc:
--Input:
--Expected Result:
--Actual Result:
--Pass of Fail?: 

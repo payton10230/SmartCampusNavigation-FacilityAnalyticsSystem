@@ -1,3 +1,8 @@
+/*
+* main.cpp
+* use: implementating all files, .txt files, and menu implementation
+* Author: Payton Dencklau
+*/
 #include "CampusGraph.h"
 #include "DepTree.h"
 #include "Facility.h"
@@ -28,6 +33,7 @@ int main(int argc, char* argv[]) {
   int choice=-1;
   string Dname, Dparent, Dreason;
   string ID;
+  string Bname;
 
   //Loading From Files
   string dir = "data";
@@ -99,17 +105,26 @@ int main(int argc, char* argv[]) {
 
     //View Campus Graph
     case 3:
-
+      cg.displayGraph();
       break;
 
     //Display graph counts and degrees
     case 4:
-
+      cg.displayCountAndDegrees();
       break;
 
     //Find Reachable buildings (BFS)
     case 5:
-
+      // Bname="";
+      cout<<"Enter Building Name: ";
+      getline(cin, Bname);
+      Bname = trim(Bname);
+      if(Bname.empty()) {
+        cout<<"Error: Name is empty or only whitespace.\n";
+        break;
+      } else {
+        cg.BfsReachable(Bname);
+      }
       break;
 
     //Add department
